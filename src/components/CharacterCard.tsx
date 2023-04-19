@@ -10,7 +10,7 @@ const CharacterCard: React.FC<Props> = ({ dataCharacter }) => {
   return (
     <div className="character-container">
       <div className="character-name">{dataCharacter.name}</div>
-      <img src={dataCharacter.image} />
+      <img src={dataCharacter.image} alt={dataCharacter.name} />
       <div className="character-info">
         <b>ID: </b>
         {dataCharacter.id}
