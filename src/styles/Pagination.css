@@ -1,0 +1,13 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.page-list {
+  display: flex;
+}
+
+.page-item {
+  margin: 16px;
+}

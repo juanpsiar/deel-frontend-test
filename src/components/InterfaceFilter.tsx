@@ -1,5 +1,6 @@
 import React from 'react'
 import { Character } from '../models/interfaces/character.interface'
+import CharacterCard from './CharacterCard'
 import '../App.css'
 
 interface Props {
@@ -41,22 +42,25 @@ const InterfaceFilter: React.FC<Props> = ({
 
   return (
     <div className="filter-list-container">
-      {filteredOptions && filteredOptions?.length > 0 ? (
-        <ul>
-          {filteredOptions?.map((option) => (
-            <li
-              className="option-list-container"
-              key={option.id}
-              onClick={() => handleSelect(option.name)}>
-              <b>{option.id} - </b>
-              {coincidenceHighlight(option.name, searchTerm)}{' '}
-              {option.type.length > 0 && `-${option.type}`}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div>{errorMessage}</div>
-      )}
+      {filteredOptions &&
+        filteredOptions?.length > 0 &&
+        // {
+        filteredOptions?.map((option) => (
+          // <li
+          //   className="option-list-container"
+          //   key={option.id}
+          //   onClick={() => handleSelect(option.name)}>
+          //   <b>{option.id} - </b>
+          //   {coincidenceHighlight(option.name, searchTerm)}{' '}
+          //   {option.type.length > 0 && `-${option.type}`}
+
+          // </li>
+          <CharacterCard dataCharacter={option} />
+        ))}
+
+      {/* // ) : (
+      //   <div>{errorMessage}</div>
+      // )} */}
     </div>
   )
 }

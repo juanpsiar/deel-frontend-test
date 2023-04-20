@@ -4,6 +4,7 @@ import InterfaceFilter from './components/InterfaceFilter'
 import CharacterCard from './components/CharacterCard'
 import { getAllCharacters } from './services/GetDataAPI'
 import { Character } from './models/interfaces/character.interface'
+import PaginationComponent from './components/PaginationComponent'
 
 const App: React.FC = () => {
   const [selectedValue, setSelectedValue] = useState<string>('')
@@ -81,8 +82,8 @@ const App: React.FC = () => {
 
   return (
     <div className="container">
-      <h2 className="title-page">Autocomplete Rick & Morty</h2>
-      <div className="">
+      <h2 className="title-page">Rick & Morty Characters</h2>
+      <div className="vertical-container">
         <input
           className="input-search"
           type="text"
@@ -109,6 +110,7 @@ const App: React.FC = () => {
           </div>
         )}
       </div>
+      <PaginationComponent allDataCounter={4} />
     </div>
   )
 }
