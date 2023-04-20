@@ -19,7 +19,15 @@ export interface Character {
   created: string
 }
 
+export interface Info {
+  count: number
+  next: string
+  pages: number
+  prev: string
+}
+
 export interface resultsAPI {
   results?: Character[]
+  info?: Info
   error?: string
 }
