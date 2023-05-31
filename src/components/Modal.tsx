@@ -1,20 +1,37 @@
-import React, { useState, ReactNode } from 'react'
-import '../styles/Modal.css'
+import React, { useState, ReactNode, useEffect } from 'react';
+import '../styles/Modal.css';
 
 interface ModalProps {
-  children: ReactNode
-  showModal: boolean
-  setShowModal: (value: boolean) => void
+  children: ReactNode;
+  showModal: boolean;
+  setShowModal: (value: boolean) => void;
 }
 
 const Modal = ({ children, showModal, setShowModal }: ModalProps) => {
-  const openModal = () => {
-    setShowModal(true)
-  }
+
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (target.classList.contains('modal')) {
+        setShowModal(false);
+      }
+    };
+
+    if (showModal) {
+      document.addEventListener('mousedown', handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, [showModal, setShowModal]);
+
+  if (!showModal) return null;
 
   const closeModal = () => {
-    setShowModal(false)
-  }
+    setShowModal(false);
+  };
 
   return (
     <div>
@@ -31,7 +48,7 @@ const Modal = ({ children, showModal, setShowModal }: ModalProps) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;

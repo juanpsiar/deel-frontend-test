@@ -1,7 +1,14 @@
 .pagination-container {
   display: flex;
   justify-content: center;
-  width: 100%;
+  align-items: center;
+  width: 100%; 
+}
+
+.pagination-container button {
+  height: 75%;
+  width: 5rem;
+  border-radius: 16px;
 }
 
 .page-list {
@@ -9,5 +16,26 @@
 }
 
 .page-item {
-  margin: 16px;
+  padding: 12px;
+  margin: 12px;
+  border-radius: 15px;
+  border: solid 1px #888;
+  width: 1rem;
+  display: flex;
+  justify-content:center;
+}
+
+.page-item:hover {
+  background-color: #888aaa;
+}
+
+.page-item-selected {
+  display: flex;
+  justify-content:center;
+  padding: 12px;
+  margin: 12px;
+  border-radius: 15px;
+  border: solid 1px #888aaa;
+  width: 1rem;
+  background-color: #2271ad;
 }

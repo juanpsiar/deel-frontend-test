@@ -10,7 +10,6 @@ interface PaginationProps {
 
 const Pagination = ({ allDataCounter, setPageIndex, pageIndex }: PaginationProps) => {
   const pages = Array.from({ length: allDataCounter!.pages }, (_, index) => index + 1)
-  console.log({ allDataCounter }, { pageIndex })
   return (
     <div className="pagination-container">
       <button
@@ -20,7 +19,10 @@ const Pagination = ({ allDataCounter, setPageIndex, pageIndex }: PaginationProps
       </button>
       <div className="page-list">
         {pages.map((itemNumber, index) => (
-          <div className="page-item" id={`${itemNumber}-${index}`}>
+          <div
+            className={pageIndex === itemNumber ? 'page-item-selected': "page-item"}
+            id={`${itemNumber}-${index}`}
+            onClick={setPageIndex ? () => setPageIndex(itemNumber): ()=>{}}>
             {itemNumber}
           </div>
         ))}

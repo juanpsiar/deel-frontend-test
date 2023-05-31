@@ -1,39 +1,40 @@
-import React from 'react'
-import { Character } from '../models/interfaces/character.interface'
-import '../styles/CharacterCard.css'
+import React from 'react';
+import { Character } from '../models/interfaces/character.interface';
+import '../styles/CharacterCard.css';
 
 interface Props {
-  dataCharacter: Character
-  onSelect: (value: string) => void
+  dataCharacter: Character;
+  onSelect: (value: string) => void;
+  textSearch: string;
 }
 
-const CharacterCard: React.FC<Props> = ({ dataCharacter, onSelect }) => {
-  const colorStatus: { [key: string]: string } = {
+const CharacterCard: React.FC<Props> = ({ dataCharacter, onSelect, textSearch }) => {
+  const colorStatus: { [key: string]: string; } = {
     alive: 'green',
     dead: 'red',
     unknown: 'gray',
-  }
+  };
 
-  const coincidenceHighlight = (nameOption: string, match: string) => {
-    const copyName = nameOption
-    const index = copyName.toLowerCase().indexOf(match.toLowerCase().trim())
-    let elementRender = <>{nameOption}</>
+  const coincidenceHighlight = (nameOption: string) => {
+    const copyName = nameOption;
+    const index = copyName.toLowerCase().indexOf(textSearch.toLowerCase().trim());
+    let elementRender = <>{nameOption}</>;
     if (index !== -1) {
       elementRender = (
         <span>
           {nameOption.substring(0, index)}{' '}
           <span className="highlight-text">
-            {nameOption.substring(index, index + match.length)}
+            {nameOption.substring(index, index + textSearch.length)}
           </span>
-          {nameOption.substring(index + match.length)}
+          {nameOption.substring(index + textSearch.length)}
         </span>
-      )
+      );
     }
-    return elementRender
-  }
+    return elementRender;
+  };
 
   return (
-    <div className="character-container" onClick={() => onSelect(dataCharacter.name)}>
+    <div key={`${dataCharacter.name}`} className="character-container" onClick={() => onSelect(dataCharacter.name)}>
       <div className="character-image-status">
         <img className="character-image" src={dataCharacter.image} alt={dataCharacter.name} />
         <span
@@ -43,7 +44,7 @@ const CharacterCard: React.FC<Props> = ({ dataCharacter, onSelect }) => {
       </div>
 
       <div className="character-info-container">
-        <h3 className="character-name">{dataCharacter.name}</h3>
+        <h3 className="character-name">{coincidenceHighlight(dataCharacter.name)}</h3>
         {/* <div className="character-info">
           <b>Type: </b>
           {dataCharacter.type.length > 0 ? dataCharacter.type : 'Unknown'}
@@ -66,7 +67,7 @@ const CharacterCard: React.FC<Props> = ({ dataCharacter, onSelect }) => {
         </div> */}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CharacterCard
+export default CharacterCard;

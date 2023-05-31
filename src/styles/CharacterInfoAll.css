@@ -31,6 +31,18 @@
   color: cadetblue;
 }
 
+.character-all-info-episode{
+  font-size: 1.25rem;
+  margin: 5px;
+  /* height: 25vh;
+  overflow-y: scroll; */
+  background-color: #fff;
+}
+
+.character-all-info-episode > a {
+    color: cadetblue;
+}
+
 .character-all-image {
   width: 100%;
   border-radius: 10px 10px 0 0;
