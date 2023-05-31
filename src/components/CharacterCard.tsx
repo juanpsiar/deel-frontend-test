@@ -22,7 +22,7 @@ const CharacterCard: React.FC<Props> = ({ dataCharacter, onSelect, textSearch })
     if (index !== -1) {
       elementRender = (
         <span>
-          {nameOption.substring(0, index)}{' '}
+          {nameOption.substring(0, index)}
           <span className="highlight-text">
             {nameOption.substring(index, index + textSearch.length)}
           </span>
