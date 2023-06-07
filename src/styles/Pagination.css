@@ -2,13 +2,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; 
+  position: absolute;
+  bottom: 0;
+  background-color: #1b1b1b;
+  border-radius: 16px;
 }
 
 .pagination-container button {
-  height: 75%;
-  width: 5rem;
+  height: 3rem;
+  width: 4rem;
   border-radius: 16px;
+  color: #2271ad;
+  margin: 0 10px;
+
+  &:disabled {
+    background-color: #888999;
+    color: #bbb;
+  }
 }
 
 .page-list {
@@ -22,7 +32,7 @@
   border: solid 1px #888;
   width: 1rem;
   display: flex;
-  justify-content:center;
+  justify-content: center;
 }
 
 .page-item:hover {
@@ -31,7 +41,7 @@
 
 .page-item-selected {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   padding: 12px;
   margin: 12px;
   border-radius: 15px;
